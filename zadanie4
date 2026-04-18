@@ -1,0 +1,32 @@
+USE aggregates;
+
+-- a. Rozłóż datę pokazaną w kolumnie start_date na trzy kolumny: rok, miesiąc, dzień.
+
+SELECT 
+    EXTRACT(DAY FROM start_date) AS Dzien,
+    EXTRACT(MONTH FROM start_date) AS Miesiac,
+    EXTRACT(YEAR FROM start_date) AS Rok
+FROM batman;
+
+-- b. Wyświetl kolumnę start_date oraz kolumnę final_date, która wyświetli datę o 3 dni późniejszą, niż data w start_date.
+SELECT 
+	start_date,
+    DATE_ADD(start_date, INTERVAL 3 DAY) AS final_date
+FROM batman;
+
+-- c. Wyświetl dzisiejszą datę.
+
+SELECT CURRENT_DATE
+
+-- d. Wyświetl nazwę obecnego miesiąca.
+
+SELECT MONTHNAME(CURRENT_DATE) AS Miesiac;
+
+-- e. Wyświetl start_date, a następnie kolumny określające: numer tygodnia, nazwę miesiąca, kwartał, numer dnia w roku.
+
+SELECT start_date, 
+WEEK(start_date) AS Nr_tygodnia,
+MONTHNAME(start_date) AS Miesiac, 
+QUARTER(start_date) AS Kwartal,
+DAYOFYEAR(start_date) AS Dzien_w_roku
+FROM batman;
