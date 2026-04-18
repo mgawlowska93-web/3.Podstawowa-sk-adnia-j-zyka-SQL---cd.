@@ -1,0 +1,34 @@
+USE aggregates;
+
+-- a. Wyświetl imię i nazwisko w jednej kolumnie. Kolumnie nadaj alias „Pracownik”
+SELECT CONCAT(first_name, ' ', last_name) AS Pracownik 
+FROM batman;
+
+-- b. Złącz kolumny gift i price tak, aby powstał napis: „rower – cena: ”. Kolumnie nadaj alias: cennik.
+SELECT CONCAT(gift, '-', price) AS Cennik 
+FROM batman;
+
+-- c. Ponownie wykonaj zadanie 2b – doklej imię i nazwisko pracownika
+SELECT
+CONCAT(first_name, ' ', last_name) AS Pracownik, 
+CONCAT(gift, '-', price) AS Cennik
+FROM batman;
+
+-- d. Wyświetl prezenty. Ich nazwy mają być wyświetlane wielkimi literami.
+SELECT UPPER(gift) FROM batman;
+
+-- e. Wyświetl imiona. Mają być wyświetlane małymi literami.
+SELECT LOWER(first_name) FROM batman;
+
+-- f. Wyświetl nazwiska oraz dodatkową kolumnę „długość” zawierającą informację o liczbie liter w nazwisku.
+SELECT last_name, LENGTH(last_name) AS długość FROM batman;
+
+-- g. Wyświetl pierwsze dwie litery imion.
+SELECT LEFT(first_name, 2) FROM batman;
+
+-- h. Wyświetl imię, nazwisko i login użytkownika w formacie: mała litera imienia + 3 pierwsze, małe litery nazwiska.
+
+SELECT 
+CONCAT(first_name, ' ', last_name) AS Pracownik,  
+CONCAT(LOWER(LEFT(first_name, 3)), LOWER(last_name)) AS login 
+FROM batman;
